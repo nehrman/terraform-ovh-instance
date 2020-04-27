@@ -1,1 +1,1 @@
-# terraform-ovh-openstack
+# terraform-ovh-instance
