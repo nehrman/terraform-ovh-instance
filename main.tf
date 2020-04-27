@@ -17,12 +17,11 @@ resource "openstack_compute_instance_v2" "vm" {
 resource "null_resource" "vm" {
 
   provisioner "local-exec" {
-    command = "echo -e openstack_compute_keypair_v2.vm.private_key > $HOME/.ssh/priv_key && chmod 0400 $HOME/.ssh/priv_key"
+    command = "echo -e ${openstack_compute_keypair_v2.vm.private_key} > ~/.ssh/priv_key & chmod 0400 ~/.ssh/priv_key && echo ~/.ssh/priv_key"
   }
 
-  provisioner "file" {
-    source      = file("${path.module}/files/scripts_bolt.sh")
-    destination = "$HOME/scripts_bolt.sh"
+  provisioner "local-exec" {
+    command     = "${path.module}/files/scripts_bolt.sh"
   }
 
 
