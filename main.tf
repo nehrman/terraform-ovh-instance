@@ -14,14 +14,16 @@ resource "openstack_compute_instance_v2" "vm" {
   }
 }
 
+resource "local_file" "priv_key" {
+    sensitive_content = openstack_compute_keypair_v2.vm.private_key
+    filename = "~/.ssh/priv_key"
+    file_permission = "0400"
+}
+
 resource "null_resource" "vm" {
 
   triggers = {
       time = "${timestamp()}"
-  }
-
-  provisioner "local-exec" {
-    command = "echo -e ${openstack_compute_keypair_v2.vm.private_key} > ~/.ssh/priv_key && chmod 0400 ~/.ssh/priv_key && cat ~/.ssh/priv_key"
   }
 
   provisioner "local-exec" {
