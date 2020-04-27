@@ -25,7 +25,7 @@ resource "null_resource" "vm" {
   }
 
 
-  provisioner "puppet" "web" {
+  provisioner "puppet" {
         server = "puppetmaster.lab.deploy.ovh.net"
         server_user = "centos"
         os_type = "linux"
