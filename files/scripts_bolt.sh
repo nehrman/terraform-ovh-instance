@@ -18,8 +18,8 @@ concurrency: 10
 format: human
 ssh:
     host-key-check: false
-    user: root
-    private-key: ~/.ssh/bolt_id 
+    user: centos
+    private-key: ~/.ssh/priv_key
 EOF
 
 cat << EOF > ~/.puppetlabs/bolt/inventory.yaml
@@ -27,8 +27,8 @@ cat << EOF > ~/.puppetlabs/bolt/inventory.yaml
 config:
     ssh:
         host-key-check: false
-        user: root
-        private-key: ~/.ssh/bolt_id
+        user: centos
+        private-key: ~/.ssh/priv_key
 EOF
 
 cat << EOF > ~/.puppetlabs/bolt/Puppetfile

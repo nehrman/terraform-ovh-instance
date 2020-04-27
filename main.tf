@@ -25,12 +25,19 @@ resource "null_resource" "vm" {
   }
 
 
-  /*     provisioner "puppet" "web" {
+  provisioner "puppet" "web" {
         server = "puppetmaster.lab.deploy.ovh.net"
-        server_user = "root"
+        server_user = "centos"
         os_type = "linux"
         environment = "production"
         autosign = true
         open_source = true
-    } */
+
+        connection {
+            type = "ssh"
+            host = openstack_compute_instance_v2.vm.access_ip_v4
+            user = "centos"
+            private_key = "~/.ssh/priv_key"
+        }
+    } 
 }
