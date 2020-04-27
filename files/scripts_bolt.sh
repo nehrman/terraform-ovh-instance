@@ -7,7 +7,7 @@ sudo apt-get install -y wget
 wget https://apt.puppet.com/puppet-tools-release-xenial.deb
 sudo dpkg -i puppet-tools-release-xenial.deb
 sudo apt-get update
-sudo apt-get install -y puppet-bolt
+sudo apt-get install -y puppet-bolt=1.49.0-1xenial
 
 mkdir -p ~/.puppetlabs/bolt/
 
