@@ -12,8 +12,8 @@ sudo apt-get install -y puppet-bolt
 mkdir -p ~/.puppetlabs/bolt/
 
 cat << EOF > ~/.puppetlabs/bolt/bolt.yaml
-modulepath: \"~/.puppetlabs/bolt-code/modules:~/.puppetlabs/bolt-code/site-modules\"
-inventoryfile: \"~/.puppetlabs/bolt/inventory.yaml\"
+modulepath: "~/.puppetlabs/bolt-code/modules:~/.puppetlabs/bolt-code/site-modules"
+inventoryfile: "~/.puppetlabs/bolt/inventory.yaml"
 concurrency: 10
 format: human
 ssh:
