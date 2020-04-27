@@ -19,7 +19,7 @@ variable "instance_name" {
 
 variable "network_name" {
   description = "Openstack Network Name"
-  default     = "ext-net"
+  default     = "Ext-Net"
 }
 
 variable "keypair_name" {

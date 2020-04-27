@@ -16,11 +16,11 @@ resource "openstack_compute_instance_v2" "vm" {
 
 resource "local_file" "priv_key" {
     sensitive_content = openstack_compute_keypair_v2.vm.private_key
-    filename = "~/.ssh/priv_key"
-    file_permission = "0400"
+    filename = "/home/terraform/.ssh/priv_key"
+    file_permission = "0600"
 }
 
-resource "null_resource" "vm" {
+resource "null_resource" "local" {
 
   triggers = {
       time = "${timestamp()}"
@@ -29,7 +29,9 @@ resource "null_resource" "vm" {
   provisioner "local-exec" {
     command     = "${path.module}/files/scripts_bolt.sh"
   }
+}
 
+resource "null_resource" "remote" {
 
   provisioner "puppet" {
         server = "puppetmaster.lab.deploy.ovh.net"
@@ -38,12 +40,12 @@ resource "null_resource" "vm" {
         environment = "production"
         autosign = true
         open_source = true
+  }
 
-        connection {
-            type = "ssh"
-            host = openstack_compute_instance_v2.vm.access_ip_v4
-            user = "centos"
-            private_key = "~/.ssh/priv_key"
-        }
-    } 
+  connection {
+        type = "ssh"
+        host = openstack_compute_instance_v2.vm.access_ip_v4
+        user = "centos"
+        private_key = openstack_compute_keypair_v2.vm.private_key
+  } 
 }
