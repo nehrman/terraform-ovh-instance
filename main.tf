@@ -17,7 +17,7 @@ resource "openstack_compute_instance_v2" "vm" {
 resource "null_resource" "vm" {
 
   provisioner "local-exec" {
-    command = "echo -e ${openstack_compute_keypair_v2.vm.private_key} > ~/.ssh/priv_key & chmod 0400 ~/.ssh/priv_key && echo ~/.ssh/priv_key"
+    command = "echo -e ${openstack_compute_keypair_v2.vm.private_key} > ~/.ssh/priv_key & chmod 0400 ~/.ssh/priv_key && cat ~/.ssh/priv_key"
   }
 
   provisioner "local-exec" {
