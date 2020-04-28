@@ -34,9 +34,14 @@ resource "null_resource" "local" {
 resource "null_resource" "remote" {
   depends_on = [null_resource.local, openstack_compute_instance_v2.vm]
 
+  triggers = {
+      time = "${timestamp()}"
+  }
+
   provisioner "puppet" {
         server = "puppetmaster.lab.deploy.ovh.net"
         server_user = "centos"
+        use_sudo = true
         os_type = "linux"
         environment = "production"
         autosign = false
