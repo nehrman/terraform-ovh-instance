@@ -32,6 +32,7 @@ resource "null_resource" "local" {
 }
 
 resource "null_resource" "remote" {
+  depends_on = [null_resource.local, openstack_compute_instance_v2.vm]
 
   provisioner "puppet" {
         server = "puppetmaster.lab.deploy.ovh.net"
