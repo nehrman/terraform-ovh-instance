@@ -38,7 +38,7 @@ resource "null_resource" "remote" {
         server_user = "centos"
         os_type = "linux"
         environment = "production"
-        autosign = true
+        autosign = false
         open_source = true
   }
 
