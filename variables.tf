@@ -24,7 +24,12 @@ variable "network_name" {
 
 variable "keypair_name" {
   description = "Openstack KeyPair Name"
-  default = "demo"
+  default     = "demo"
+}
+
+variable "instance_count" {
+  description = "Instance Count"
+  default     = "1"
 }
 
 variable "security_groups" {
