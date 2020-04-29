@@ -4,7 +4,7 @@ resource "openstack_compute_keypair_v2" "vm" {
 
 resource "openstack_compute_instance_v2" "vm" {
   count           = var.instance_count
-  name            = var.instance_name[count.index]
+  name            = var.instance_name-[count.index]
   image_id        = data.openstack_images_image_v2.vm.id
   flavor_id       = data.openstack_compute_flavor_v2.vm.id
   key_pair        = openstack_compute_keypair_v2.vm.name
