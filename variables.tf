@@ -5,7 +5,7 @@ variable "image_name" {
 
 variable "flavor_vcpus" {
   description = "OpenStack Flavor vCPUs"
-  default     = "2"
+  default     = "1"
 }
 
 variable "flavor_min_vram" {
