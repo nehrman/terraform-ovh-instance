@@ -37,7 +37,7 @@ resource "null_resource" "remote" {
   count      = length(openstack_compute_instance_v2.vm.*.name)
 
   triggers = {
-    time = "${timestamp()}"
+    time = length(openstack_compute_instance_v2.vm.*.name)
   }
 
   provisioner "puppet" {
